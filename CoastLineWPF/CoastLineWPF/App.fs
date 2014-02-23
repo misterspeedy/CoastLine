@@ -6,6 +6,7 @@ open System.Windows.Controls
 open System.Windows.Threading
 open System.Windows.Media
 open System.Windows.Shapes
+open System.Windows.Input
 open FSharpx
 
 open CoastLine
@@ -13,13 +14,13 @@ open CoastLine
 let Colours =
     [|
         Colors.Black
-        Colors.Blue
-        Colors.Red
-        Colors.Green
-        Colors.Aqua
-        Colors.Orange
-        Colors.BlueViolet
-        Colors.Cyan
+//        Colors.Blue
+//        Colors.Red
+//        Colors.Green
+//        Colors.Aqua
+//        Colors.Orange
+//        Colors.BlueViolet
+//        Colors.Cyan
     |]
 
 type MainWindow = XAML<"MainWindow.xaml">
@@ -33,7 +34,9 @@ let rawData = Data.GetCoast dataPath
 let ToPolyLine i points =
     let colorIndex = i % (Colours |> Array.length)
 
-    let xScale, yScale = 30., 50.
+    let xScale = win.Root.ActualHeight / 50. * 1.7 
+    let yScale = win.Root.ActualHeight / 30. * 1.7
+
     let scaledPoints = points |> Seq.map (fun p -> Point((p.Long * xScale), (72.- p.Lat) * yScale))
 
     let pl = Polyline()
@@ -99,7 +102,10 @@ let LoadWindow() =
         Refresh (GetEpsilon()) rawData
     )
 
-    Refresh (GetEpsilon()) rawData
+    win.Root.SizeChanged.Add(fun _ -> 
+        Refresh (GetEpsilon()) rawData
+    )
+
     win.Root
 
 [<STAThread>]
