@@ -2,7 +2,7 @@
 
 open System
 
-type Point = { Long: double; Lat : double}
+type Point = {Long: double; Lat : double}
 
 module Reduce = 
 

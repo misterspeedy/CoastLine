@@ -26,12 +26,10 @@ module Data =
         |> Array.Parallel.map ToPoints
         |> FilterCount 100
 
-    let Simplify e polygons =
-        polygons
+    let Simplify e polyLines =
+        polyLines
         |> Array.Parallel.map (fun p -> 
-            p 
-            |> Array.ofSeq 
-            |> Reduce.Reduce e)
+            p |> Reduce.Reduce e)
          
     let GetCoast fileName = 
         let polyLines = ReadData fileName
