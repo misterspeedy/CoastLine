@@ -8,11 +8,11 @@ module Reduce =
 
     let private findPerpendicularDistance p p1 p2 =
         if (p1.Long = p2.Long) then
-            Math.Abs(p.Long - p1.Long)
+            abs(p.Long - p1.Long)
         else 
             let slope = (p2.Lat - p1.Lat) / (p2.Long - p1.Long)
             let intercept = p1.Lat - (slope * p1.Long)
-            Math.Abs(slope * p.Long - p.Lat + intercept) / Math.Sqrt(Math.Pow(slope, 2.) + 1.)
+            abs(slope * p.Long - p.Lat + intercept) / sqrt((pown slope 2) + 1.)
 
     let rec Reduce epsilon (points : Point[]) =
         if points.Length < 3 || epsilon = 0. then
