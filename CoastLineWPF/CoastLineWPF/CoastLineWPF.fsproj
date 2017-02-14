@@ -9,9 +9,10 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>CoastLineWPF</RootNamespace>
     <AssemblyName>CoastLineWPF</AssemblyName>
-    <targetframeworkversion>v4.5</targetframeworkversion>
-    <TargetFSharpCoreVersion>4.3.0.0</TargetFSharpCoreVersion>
+    <targetframeworkversion>v4.6.1</targetframeworkversion>
+    <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>
     <Name>CoastLineWPF</Name>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,6 +56,9 @@
     <Resource Include="MainWindow.xaml" />
     <None Include="packages.config" />
     <Compile Include="App.fs" />
+    <Content Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
@@ -79,8 +83,6 @@
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\CoastLine\CoastLine.fsproj">
       <Name>CoastLine</Name>
       <Project>{2f69b0d6-582e-4547-814a-cb48f31cd998}</Project>
